@@ -328,7 +328,7 @@ function App() {
   ];
 
   const renderDashboard = () => (
-    <div className="max-w-7xl mx-auto">
+    <div className="space-y-12">
       {/* Top Navigation */}
       <nav className="bg-white/25 backdrop-blur-xl rounded-3xl p-4 mb-8 border border-white/30 shadow-2xl">
         <div className="flex justify-between items-center">
@@ -414,8 +414,11 @@ function App() {
       </nav>
 
       {/* Welcome Section */}
-      <div className="mb-8">
-        <h2 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-6 animate-pulse-glow">
+          <BookOpen className="w-10 h-10 text-white" />
+        </div>
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-6">
           Hello, {currentUser?.name || 'Welcome Back'}
         </h2>
       </div>
@@ -550,63 +553,81 @@ function App() {
               placeholder="Type a message..."
               className="flex-1 bg-white/30 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-2 text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
-            <button className="bg-gradient-to-r from-blue-400 to-cyan-500 text-white p-2 rounded-2xl hover:shadow-lg transition-all duration-200">
               <Send className="w-5 h-5" />
             </button>
-          </div>
+              className="w-full py-4 px-6 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-purple-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center group"
         </div>
-      </div>
+              <span>Start Learning</span>
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
     </div>
   );
 
   const renderSignup = () => (
-    <div className="max-w-md mx-auto">
-      <div className="bg-white/25 backdrop-blur-xl rounded-3xl p-8 border border-white/30 shadow-2xl">
-        <h2 className="text-4xl font-bold text-blue-600 text-center mb-8">Sign Up</h2>
-        
+          <div className="group bg-white/40 rounded-2xl p-8 backdrop-blur-sm border border-white/30 hover:bg-white/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <div className="flex items-center mb-6">
+              <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <Zap className="w-7 h-7 text-white" />
+              </div>
+            </div>
+            <h3 className="font-bold text-xl text-gray-800 mb-4 group-hover:text-green-700 transition-colors">Building AI Agents & Workflows</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">Create intelligent automation systems and AI-powered workflows for modern applications.</p>
+            <div className="flex items-center mb-6 text-sm text-gray-500">
+              <Users className="w-4 h-4 mr-2" />
+              <span>5 Modules • 30 Lessons</span>
         <form onSubmit={handleSignUp} className="space-y-6">
-          <div>
             <input
               type="text"
-              placeholder="Name"
+              className="w-full py-4 px-6 bg-gradient-to-r from-green-600 to-emerald-700 text-white font-semibold rounded-xl hover:from-green-700 hover:to-emerald-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center group"
               required
-              className="w-full bg-white/40 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg"
+              <span>Start Learning</span>
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             />
           </div>
           
           <div>
             <input
               type="email"
-              placeholder="Email"
-              required
-              className="w-full bg-white/40 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg"
+      <div className="glass-card rounded-3xl p-10 shadow-4xl">
+        <div className="flex items-center mb-8">
+          <Zap className="w-8 h-8 text-yellow-600 mr-4 hover:scale-110 transition-transform" />
+          <h2 className="text-3xl font-bold text-gray-800">Quick Actions</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             />
           </div>
-          
+            className="group flex flex-col items-center justify-center p-8 bg-white/40 rounded-2xl hover:bg-white/60 transition-all duration-300 border border-white/30 hover:scale-105 hover:shadow-xl"
           <div>
-            <input
-              type="password"
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <BookOpen className="w-6 h-6 text-white" />
+            </div>
+            <span className="font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">Resume Course</span>
               placeholder="Password"
               required
               className="w-full bg-white/40 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg"
-            />
+            className="group flex flex-col items-center justify-center p-8 bg-white/40 rounded-2xl hover:bg-white/60 transition-all duration-300 border border-white/30 hover:scale-105 hover:shadow-xl"
           </div>
-          
-          <button
+            <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <User className="w-6 h-6 text-white" />
+            </div>
+            <span className="font-semibold text-gray-800 group-hover:text-purple-700 transition-colors">View Profile</span>
             type="submit"
             className="w-full bg-gradient-to-r from-cyan-400 to-green-500 text-white py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
           >
-            Sign Up
+            className="group flex flex-col items-center justify-center p-8 bg-white/40 rounded-2xl hover:bg-white/60 transition-all duration-300 border border-white/30 hover:scale-105 hover:shadow-xl"
           </button>
-        </form>
-        
+            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <Settings className="w-6 h-6 text-white" />
+            </div>
+            <span className="font-semibold text-gray-800 group-hover:text-green-700 transition-colors">Settings</span>
         <div className="text-center mt-8">
           <p className="text-blue-600 mb-2">Already have an account?</p>
           <button 
-            onClick={handleLogin}
+            className="group flex flex-col items-center justify-center p-8 bg-white/40 rounded-2xl hover:bg-white/60 transition-all duration-300 border border-white/30 hover:scale-105 hover:shadow-xl"
             className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
-          >
-            Log in
+            <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <HelpCircle className="w-6 h-6 text-white" />
+            </div>
+            <span className="font-semibold text-gray-800 group-hover:text-orange-700 transition-colors">Get Help</span>
           </button>
         </div>
       </div>
@@ -795,23 +816,31 @@ function App() {
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
                   <Code className="w-6 h-6 text-white" />
-                </div>
-                <div>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          Continue your learning journey and master the art of no-code development
                   <h1 className="text-xl font-bold text-gray-800">{vibeCodingCourseContent.title}</h1>
                   <p className="text-sm text-gray-600">{vibeCodingCourseContent.tagline}</p>
                 </div>
               </div>
-              
-              {/* Search Bar */}
-              <div className="relative mb-4">
+      <div className="glass-card rounded-3xl p-10 shadow-4xl">
+        <div className="flex items-center mb-8">
+          <TrendingUp className="w-8 h-8 text-blue-600 mr-4 hover:scale-110 transition-transform" />
+          <h2 className="text-3xl font-bold text-gray-800">Your Progress</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search lessons..."
+            <div key={index} className="group bg-white/40 rounded-2xl p-8 backdrop-blur-sm border border-white/30 hover:bg-white/50 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="flex items-center mb-4">
+                <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-3 group-hover:scale-125 transition-transform"></div>
+                <h3 className="font-bold text-gray-800 text-lg group-hover:text-blue-700 transition-colors">{course.title}</h3>
+              </div>
+              <div className="w-full bg-gray-200/60 rounded-full h-4 mb-4 overflow-hidden">
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 h-4 rounded-full transition-all duration-1000 relative overflow-hidden"
                   className="w-full pl-10 pr-4 py-2 bg-white/50 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500/50 text-sm"
-                />
+                >
+                  <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+                </div>
               </div>
               
               {/* Overview Panel */}
@@ -1508,7 +1537,13 @@ function App() {
         {/* Leaf-like organic shapes */}
         <div className="absolute top-1/4 left-1/4 w-36 h-20 bg-green-300/20 rounded-full backdrop-blur-sm animate-float-slow transform rotate-45"></div>
         <div className="absolute bottom-1/3 right-1/4 w-32 h-16 bg-blue-300/20 rounded-full backdrop-blur-sm animate-float-medium transform -rotate-12"></div>
-        
+              <div className="flex justify-between items-center">
+                <p className="text-sm font-medium text-gray-700">{course.progress}% Complete</p>
+                <div className="flex items-center text-xs text-gray-500">
+                  <Clock className="w-3 h-3 mr-1" />
+                  {course.progress < 100 ? 'In Progress' : 'Completed'}
+                </div>
+              </div>
         {/* Additional decorative elements */}
         <div className="absolute top-40 left-1/3 w-24 h-24 bg-white/10 rounded-full backdrop-blur-sm animate-float-slow"></div>
         <div className="absolute bottom-40 right-20 w-20 h-20 bg-purple-200/25 rounded-full backdrop-blur-sm animate-float-medium"></div>
@@ -1540,21 +1575,31 @@ function App() {
             />
             <button
               onClick={() => setCurrentPage('courses')}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                currentPage === 'courses' ? 'bg-white' : 'bg-white/40'
-              }`}
+      <div className="glass-card rounded-3xl p-10 shadow-4xl">
+        <div className="flex items-center mb-10">
+          <Layers className="w-8 h-8 text-purple-600 mr-4 hover:scale-110 transition-transform" />
+          <h2 className="text-3xl font-bold text-gray-800">Course Overview</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             />
-            <button
-              onClick={() => setCurrentPage('vibe-coding-course')}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                ['course-detail', 'vibe-coding-course', 'nocode-platforms-course', 'ai-agents-course'].includes(currentPage) ? 'bg-white' : 'bg-white/40'
+          <div className="group bg-white/40 rounded-2xl p-8 backdrop-blur-sm border border-white/30 hover:bg-white/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <div className="flex items-center mb-6">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <Code className="w-7 h-7 text-white" />
+              </div>
+            </div>
+            <h3 className="font-bold text-xl text-gray-800 mb-4 group-hover:text-blue-700 transition-colors">Vibe Coding Fundamentals</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">Master the basics of visual programming and build your first applications with confidence.</p>
+            <div className="flex items-center mb-6 text-sm text-gray-500">
+              <Users className="w-4 h-4 mr-2" />
+              <span>5 Modules • 25 Lessons</span>
               }`}
-            />
             <button
               onClick={() => setCurrentPage('lesson')}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
+              className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center group"
                 currentPage === 'lesson' ? 'bg-white' : 'bg-white/40'
-              }`}
+              <span>Continue Learning</span>
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             />
           </div>
         </div>
@@ -1564,3 +1609,14 @@ function App() {
 }
 
 export default App;
+          <div className="group bg-white/40 rounded-2xl p-8 backdrop-blur-sm border border-white/30 hover:bg-white/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <div className="flex items-center mb-6">
+              <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <Layers className="w-7 h-7 text-white" />
+              </div>
+            </div>
+            <h3 className="font-bold text-xl text-gray-800 mb-4 group-hover:text-purple-700 transition-colors">No-Code Development Platforms</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">Explore popular no-code tools and learn to build powerful applications without writing code.</p>
+            <div className="flex items-center mb-6 text-sm text-gray-500">
+              <Users className="w-4 h-4 mr-2" />
+              <span>4 Modules • 20 Lessons</span>
