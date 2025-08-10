@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { supabase, Course, Module, Lesson, Progress, Enrollment } from '../lib/supabase';
+import { supabase, Course, Module, Lesson, Progress, Enrollment, Profile } from '../lib/supabase';
 
 // Hook for fetching courses
 export const useCourses = () => {
@@ -130,13 +130,45 @@ export const useUserEnrollments = (userId: string) => {
   return { enrollments, loading, error };
 };
 
+// Hook for fetching user profile
+export const useUserProfile = (userId: string) => {
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', userId)
+          .single();
+
+        if (error) throw error;
+        setProfile(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (userId) {
+      fetchProfile();
+    }
+  }, [userId]);
+
+  return { profile, loading, error };
+};
+
 // Function to update progress
 export const updateProgress = async (
   userId: string,
   courseId: number,
   moduleId: number,
   lessonId: number,
-  status: string,
+  status: 'not_started' | 'in_progress' | 'completed',
   score?: number
 ) => {
   const { data, error } = await supabase
@@ -148,6 +180,8 @@ export const updateProgress = async (
       lesson_id: lessonId,
       status,
       score,
+      last_viewed_at: new Date().toISOString(),
+      ...(status === 'completed' && { completed_at: new Date().toISOString() })
     });
 
   if (error) throw error;
@@ -185,7 +219,95 @@ export const enrollInCourse = async (userId: string, courseId: number) => {
     .upsert({
       user_id: userId,
       course_id: courseId,
-      status: 'enrolled',
+      status: 'active',
+    });
+
+  if (error) throw error;
+  return data;
+};
+
+// Function to save sandbox state
+export const saveSandboxState = async (
+  userId: string,
+  courseId: number,
+  moduleId: number,
+  lessonId: number,
+  state: any,
+  version: number = 1
+) => {
+  const { data, error } = await supabase
+    .from('sandbox_states')
+    .upsert({
+      user_id: userId,
+      course_id: courseId,
+      module_id: moduleId,
+      lesson_id: lessonId,
+      state,
+      version,
+    });
+
+  if (error) throw error;
+  return data;
+};
+
+// Function to save worksheet notes
+export const saveWorksheetNotes = async (
+  userId: string,
+  lessonId: number,
+  notes: any
+) => {
+  const { data, error } = await supabase
+    .from('worksheet_notes')
+    .upsert({
+      user_id: userId,
+      lesson_id: lessonId,
+      notes,
+    });
+
+  if (error) throw error;
+  return data;
+};
+
+// Function to create chat thread
+export const createChatThread = async (
+  userId: string,
+  courseId?: number,
+  moduleId?: number,
+  lessonId?: number,
+  title?: string
+) => {
+  const { data, error } = await supabase
+    .from('chat_threads')
+    .insert({
+      user_id: userId,
+      course_id: courseId,
+      module_id: moduleId,
+      lesson_id: lessonId,
+      title,
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
+// Function to add chat message
+export const addChatMessage = async (
+  threadId: string,
+  userId: string,
+  role: 'user' | 'assistant',
+  content: string,
+  metadata?: any
+) => {
+  const { data, error } = await supabase
+    .from('chat_messages')
+    .insert({
+      thread_id: threadId,
+      user_id: userId,
+      role,
+      content,
+      metadata,
     });
 
   if (error) throw error;
